@@ -19,6 +19,9 @@ env:
 
 jobs:
   test:
+    permissions:
+      contents: read
+      packages: read
     strategy:
       fail-fast: false
       matrix:
