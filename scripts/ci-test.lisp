@@ -51,8 +51,9 @@
 
 (call-with-ci-muffles
  (lambda ()
-   (ci-load "http-protocol" :version "0.1.0")
-   (ci-load "cl-stack-brotli" :version "1.2.0")
+   ;; Omit :version → cl-repo resolves newest published tag.
+   (ci-load "http-protocol")
+   (ci-load "cl-stack-brotli")
    (ci-ensure-ql "rove" "trivial-gray-streams")
    (asdf:test-system "http-encoding-brotli")))
 
