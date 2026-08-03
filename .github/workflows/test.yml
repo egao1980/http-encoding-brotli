@@ -14,7 +14,7 @@ env:
   SBCL_VERSION: 2.4.11
   ROSWELL_VERSION: "26.02.116"
   # Raw bootstrap only for the package manager itself.
-  CL_REPOSITORY_REF: "main"
+  CL_REPOSITORY_REF: "cursor/windows-provides-symlink-58c5"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
