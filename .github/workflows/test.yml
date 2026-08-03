@@ -103,6 +103,6 @@ jobs:
         shell: bash
         run: |
           ros install rove trivial-gray-streams cffi
-          export CL_SOURCE_REGISTRY="$(pwd)//:$(pwd)/_siblings/http-protocol//:$(pwd)/_siblings/cl-stack-brotli//:"
+          export CL_SOURCE_REGISTRY="$(pwd)//;$(pwd)/_siblings/http-protocol//;$(pwd)/_siblings/cl-stack-brotli//;"
           ros -e '(setf *debugger-hook* (lambda (c h) (declare (ignore h)) (format *error-output* "~&UNHANDLED: ~A~%" c) (uiop:quit 1)))' \
               -e '(asdf:test-system "http-encoding-brotli")' -q
