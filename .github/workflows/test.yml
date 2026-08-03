@@ -48,7 +48,12 @@ jobs:
             -o /tmp/roswell.zip
           rm -rf /c/roswell && mkdir -p /c/roswell
           unzip -qo /tmp/roswell.zip -d /c/roswell
-          echo "/c/roswell/roswell" >> "$GITHUB_PATH"
+          # Release zip is roswell/{ros.exe,lisp/}; standard install layout is /c/roswell/bin/ros.
+          mv /c/roswell/roswell/lisp /c/roswell/lisp
+          mkdir -p /c/roswell/bin
+          mv /c/roswell/roswell/ros.exe /c/roswell/bin/ros.exe
+          rm -rf /c/roswell/roswell
+          echo "/c/roswell/bin" >> "$GITHUB_PATH"
           echo "$HOME/.roswell/bin" >> "$GITHUB_PATH"
 
       - name: Install SBCL
