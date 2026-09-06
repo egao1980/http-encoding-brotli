@@ -1,15 +1,16 @@
 (in-package #:http-encoding-brotli)
 
 (defmethod decode-content-coding ((coding (eql :br)) (input stream) &key)
-  (cl-stack-brotli:make-decompressing-stream input))
+  (compression-protocol:make-decompressing-stream input :algorithm :br))
 
 (defmethod decode-content-coding ((coding (eql :br)) input &key)
-  (cl-stack-brotli:decompress (coerce-to-octets input)))
+  (compression-protocol:decompress (coerce-to-octets input) :algorithm :br))
 
 (defmethod encode-content-coding ((coding (eql :br)) (input stream) &key level quality)
-  (declare (ignore level))
-  (cl-stack-brotli:make-compressing-stream input :quality (or quality 5)))
+  (make-octet-input-stream
+   (compression-protocol:compress input :algorithm :br
+                                  :level (or quality level 5))))
 
 (defmethod encode-content-coding ((coding (eql :br)) input &key level quality)
-  (declare (ignore level))
-  (cl-stack-brotli:compress (coerce-to-octets input) :quality (or quality 5)))
+  (compression-protocol:compress (coerce-to-octets input) :algorithm :br
+                                 :level (or quality level 5)))
