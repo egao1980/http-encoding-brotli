@@ -1,8 +1,9 @@
 # http-encoding-brotli
 
-MIT. **`br`** Content-Encoding backend for [`http-protocol`](https://github.com/egao1980/http-protocol).
-
-Depends on [`cl-stack-brotli`](https://github.com/egao1980/cl-stack-brotli) (native overlay). Soft for consumers — omit from `Accept-Encoding` when unavailable.
+MIT. **`br`** Content-Encoding adapter for [`http-protocol`](https://github.com/egao1980/http-protocol).
+Bytes go through [`compression-protocol`](https://github.com/egao1980/compression-protocol);
+[`cl-stack-brotli`](https://github.com/egao1980/cl-stack-brotli) implements `:br`. Soft for
+consumers — omit from `Accept-Encoding` when unavailable.
 
 ```bash
 # siblings: http-protocol/ cl-stack-brotli/ http-encoding-brotli/

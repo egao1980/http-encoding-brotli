@@ -1,9 +1,9 @@
 (defsystem "http-encoding-brotli"
-  :version "0.1.0"
-  :description "br Content-Encoding backend for http-protocol (cl-stack-brotli)"
+  :version "0.1.1"
+  :description "br Content-Encoding adapter over compression-protocol"
   :author "egao1980"
   :license "MIT"
-  :depends-on ("http-protocol" "cl-stack-brotli")
+  :depends-on ("http-protocol" "compression-protocol" "cl-stack-brotli")
 
   :serial t
   :pathname "src"
